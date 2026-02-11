@@ -1,0 +1,77 @@
+﻿@page "/counter"
+@using radzen.Domain.Entities
+@using radzen.Application.Contracts
+@rendermode InteractiveServer
+@using radzen.Application.Contracts;
+@using radzen.Infrastructure.Implementations;
+@using Microsoft.EntityFrameworkCore;
+@inject IEmployee emp
+
+<PageTitle>Employees</PageTitle>
+<style>
+    .loginDiv{
+        background-color:palegreen; 
+        transition: background-color 0.5s ease; 
+    }
+    .loginDiv:hover {
+        background-color:lightgreen; 
+    }
+
+    .buttons button {
+        background-color:black !important;
+        color:white !important;
+        transition:0.5s ease;
+    }
+     .buttons button:hover {
+        background-color:lightcoral !important ;
+    }
+    .buttons{
+        display: flex;
+        justify-content:space-evenly
+    }
+
+</style>
+
+
+<h1>Counter</h1>
+ @* <div class="loginDiv" style="width:50%; justify-self:center;  padding:10px; border-radius:50px; ">
+    <RadzenLogin UsernamePlaceholder="Username" PasswordPlaceholder="Password" ButtonText="Login" />
+</div> *@
+<p role="status">Current count: @currentCount</p>  
+<div class="buttons">
+    <RadzenButton class="radButton-decrement" Click=@decrement ButtonStyle="ButtonStyle.Base"> <RadzenIcon Icon="assignment_returned" />Decrement</RadzenButton>
+
+<RadzenButton click="IncrementCount" Text="Increment" Icon="add_circle" />
+
+<RadzenButton Click=@IncrementCount2 Text="Add 2" ButtonStyle="ButtonStyle.Dark
+" />
+<RadzenButton class ="rz-background-color-success rz-color-white " Click =@reset Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Base" />
+</div>
+<RadzenFabMenu class="rz-background-color-success-darker" Direction="Radzen.FabMenuDirection.Left">
+    <RadzenFabMenuItem Text="Folder" Icon="folder"  />          
+    <RadzenFabMenuItem Text="Message" Icon="chat"  />
+    <RadzenFabMenuItem Text="Article" Icon="article"  />
+</RadzenFabMenu>
+@code {
+    int random_number = 0;
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    private void IncrementCount2()
+    {
+        currentCount = currentCount + 2;
+    }
+    private void reset()
+    {
+        currentCount = 0;
+    }
+    private void decrement()
+    {
+        if(currentCount!=0)
+        currentCount--;
+    }
+   
+}

@@ -1,0 +1,70 @@
+﻿@page "/rps"
+@rendermode InteractiveServer
+<h3>RPS</h3>
+    <h1 style="text-align:center;">@result</h1  >
+    <h1 style="text-align:left; color:blue;">@playerchoice</h1>
+    <h1  style="text-align:right; position:relative; top:-55px; color:red;">@computer</h1>
+    <div class="choices" style="display:flex; justify-self:center; justify-content:space-between; gap:10px;"> 
+        <RadzenButton Click="@(() => GenerateRandomNumber(1))" Text="Rock" />
+        <RadzenButton Click="@(() => GenerateRandomNumber(2))" Text="Paper" />
+        <RadzenButton Click="@(() => GenerateRandomNumber(3))" Text="Scissors" />
+    </div>
+
+@code {
+    int random_number = 0;
+    String result = "";
+    Random random = new Random();
+    String computer = "";
+    String playerchoice = "";
+    private void GenerateRandomNumber(int player)
+    {
+        
+        // 1 = rock
+        // 2 = paper
+        // 3 = scissors
+        random_number = random.Next(1, 4); // Generates a random number between 1 and 3
+        if (player == random_number)
+        {
+            result = "It's A Tie!";
+        }
+        else if ((player == 1 && random_number == 3)||
+                (player == 2 && random_number == 1)||
+                (player == 3 && random_number == 2))
+        {
+            result = "You Win!";
+        }
+        else
+        {
+            result = "You Lose!";
+        }
+
+        if (random_number == 1)
+        {
+            computer = "Rock";
+        }
+        else if (random_number == 2)
+        {
+            computer = "Paper";
+        }
+        else
+        {
+            computer = "Scissors";
+        }
+        if (player == 1)
+        {
+            playerchoice = "Rock";
+        }
+        else if (player == 2)
+        {
+            playerchoice = "Paper";
+        }
+        else
+        {
+            playerchoice = "Scissors";
+        }
+
+        return;
+
+    }
+
+}

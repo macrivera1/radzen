@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/ApplicationLayer/">
+    <Project Path="radzen/radzen.csproj" />
+    <Project Path="WebAPI/WebAPI.csproj" Id="2a351fab-c948-434e-bb0c-4f7de03eb641" />
+  </Folder>
+  <Project Path="radzen.Application/radzen.Application.csproj" />
+  <Project Path="radzen.Domain/radzen.Domain.csproj" />
+  <Project Path="radzen.Infrastructure/radzen.Infrastructure.csproj" />
+</Solution>
